@@ -5,16 +5,16 @@ import java.io.PrintStream;
 import java.util.Scanner;
 
 import app.Message;
-import app.SocialApp;
+import app.NetworkingApp;
 import app.User;
 
 public class CommandProcessor {
 
-	private final SocialApp app;
+	private final NetworkingApp app;
 	private final Scanner scanner;
 	private final PrintStream out;
 
-	public CommandProcessor(final SocialApp app, final InputStream in, final PrintStream out) {
+	public CommandProcessor(final NetworkingApp app, final InputStream in, final PrintStream out) {
 		this.app = app;
 		this.out = out;
 		scanner = new Scanner(in);

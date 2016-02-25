@@ -3,7 +3,7 @@ package app;
 import java.util.HashSet;
 import java.util.Set;
 
-public class SocialApp {
+public class SocialApp implements NetworkingApp {
 
 	private final Set<User> users = new HashSet<User>();
 
