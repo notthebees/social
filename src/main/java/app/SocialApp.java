@@ -1,16 +1,18 @@
 package app;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class SocialApp {
 
+	private final List<User> users = new ArrayList<User>();
+
 	public SocialApp(final CommandParser parser) {
-		// TODO Auto-generated constructor stub
+		parser.connectTo(this);
 	}
 
 	public List<User> users() {
-		// TODO Auto-generated method stub
-		return null;
+		return users;
 	}
 
 }
