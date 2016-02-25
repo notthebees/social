@@ -12,8 +12,9 @@ public class TestApp {
 
 	@Test
 	public void userAddedWhenPostsFirstMessage() {
+		final SocialApp app = new SocialApp();
 		final CommandParser parser = new MockParser();
-		final SocialApp app = new SocialApp(parser);
+		parser.connectTo(app);
 
 		final User alice = new User("Alice");
 		final Message message = new Message("Testing 1 2 3");
