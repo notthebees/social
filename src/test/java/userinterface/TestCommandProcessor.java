@@ -35,6 +35,19 @@ public class TestCommandProcessor {
 	}
 
 	@Test
+	public void processesReadCommand() {
+		final InputStream in = new ByteArrayInputStream("Alice".getBytes());
+
+		final CommandProcessor processor = new CommandProcessor(app, in, System.out);
+
+		context.checking(new Expectations() {{
+			oneOf(app).readTimeline(new User("Alice"));;
+		}});
+
+		processor.getCommand();
+	}
+
+	@Test
 	public void processesPostMessageCommand() {
 		final InputStream in = new ByteArrayInputStream("Alice -> Hi Mom!".getBytes());
 

@@ -25,8 +25,12 @@ public class CommandProcessor {
 		final String input = scanner.nextLine();
 		final String[] args = input.split(" -> ");
 		final User user = new User(args[0]);
-		final Message message = new Message(args[1]);
-		app.postMessage(user, message);
+		if (args.length > 1) {
+			final Message message = new Message(args[1]);
+			app.postMessage(user, message);
+		} else {
+			app.readTimeline(user);
+		}
 	}
 
 }
