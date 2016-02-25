@@ -2,8 +2,15 @@ package app;
 
 public class User {
 
+	private final String name;
+
 	public User(final String name) {
-		// TODO Auto-generated constructor stub
+		this.name = name;
+	}
+
+	@Override
+	public String toString() {
+		return "User: " + name;
 	}
 
 }
