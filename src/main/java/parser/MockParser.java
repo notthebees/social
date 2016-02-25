@@ -1,4 +1,8 @@
-package app;
+package parser;
+
+import app.Message;
+import app.SocialApp;
+import app.User;
 
 public class MockParser implements CommandParser {
 

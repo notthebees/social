@@ -5,6 +5,9 @@ import static org.hamcrest.Matchers.contains;
 
 import org.junit.Test;
 
+import parser.CommandParser;
+import parser.MockParser;
+
 public class TestApp {
 
 	@Test
