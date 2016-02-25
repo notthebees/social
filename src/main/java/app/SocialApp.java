@@ -7,13 +7,12 @@ public class SocialApp {
 
 	private final List<User> users = new ArrayList<User>();
 
-	public List<User> users() {
-		return users;
+	public void postMessage(final User user, final Message message) {
+		users.add(user);
 	}
 
-	public void postMessage(final User user, final Message message) {
-		// TODO Auto-generated method stub
-
+	public List<User> users() {
+		return users;
 	}
 
 }
