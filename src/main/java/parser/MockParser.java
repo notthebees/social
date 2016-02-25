@@ -6,7 +6,7 @@ import app.User;
 
 public class MockParser implements CommandParser {
 
-	public void postMessage(final User alice, final Message message) {
+	public void postMessage(final User user, final Message message) {
 		// TODO Auto-generated method stub
 
 	}

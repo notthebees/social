@@ -6,7 +6,7 @@ import app.User;
 
 public interface CommandParser {
 
-	void postMessage(User alice, Message message);
+	void postMessage(User user, Message message);
 
 	void connectTo(SocialApp socialApp);
 
