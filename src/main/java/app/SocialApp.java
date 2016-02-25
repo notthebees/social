@@ -17,4 +17,9 @@ public class SocialApp {
 		return users;
 	}
 
+	public void postMessage(final User user, final Message message) {
+		// TODO Auto-generated method stub
+
+	}
+
 }
