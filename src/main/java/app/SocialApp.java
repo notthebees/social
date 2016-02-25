@@ -1,17 +1,17 @@
 package app;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.HashSet;
+import java.util.Set;
 
 public class SocialApp {
 
-	private final List<User> users = new ArrayList<User>();
+	private final Set<User> users = new HashSet<User>();
 
 	public void postMessage(final User user, final Message message) {
 		users.add(user);
 	}
 
-	public List<User> users() {
+	public Set<User> users() {
 		return users;
 	}
 
