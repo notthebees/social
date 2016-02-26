@@ -1,7 +1,5 @@
 package userinterface;
 
-import java.io.InputStream;
-import java.io.PrintStream;
 import java.util.Scanner;
 
 import app.Message;
@@ -12,16 +10,13 @@ public class CommandProcessor {
 
 	private final NetworkingApp app;
 	private final Scanner scanner;
-	private final PrintStream out;
 
-	public CommandProcessor(final NetworkingApp app, final InputStream in, final PrintStream out) {
+	public CommandProcessor(final NetworkingApp app) {
 		this.app = app;
-		this.out = out;
-		scanner = new Scanner(in);
+		scanner = new Scanner(System.in);
 	}
 
 	public void getCommand() {
-		out.println("Enter command: ");
 		final String input = scanner.nextLine();
 		final String[] args = input.split(" -> ");
 		final User user = new User(args[0]);

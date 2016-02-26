@@ -37,8 +37,9 @@ public class TestCommandProcessor {
 	@Test
 	public void processesReadCommand() {
 		final InputStream in = new ByteArrayInputStream("Alice".getBytes());
+		System.setIn(in);
 
-		final CommandProcessor processor = new CommandProcessor(app, in, System.out);
+		final CommandProcessor processor = new CommandProcessor(app);
 
 		context.checking(new Expectations() {{
 			oneOf(app).readTimeline(new User("Alice"));;
@@ -50,8 +51,9 @@ public class TestCommandProcessor {
 	@Test
 	public void processesPostMessageCommand() {
 		final InputStream in = new ByteArrayInputStream("Alice -> Hi Mom!".getBytes());
+		System.setIn(in);
 
-		final CommandProcessor processor = new CommandProcessor(app, in, System.out);
+		final CommandProcessor processor = new CommandProcessor(app);
 
 		context.checking(new Expectations() {{
 			oneOf(app).postMessage(new User("Alice"), new Message("Hi Mom!"));

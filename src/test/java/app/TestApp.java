@@ -35,9 +35,10 @@ public class TestApp {
 		final String message = "Hi Mom!";
 		final String postCommand = userName + " -> " + message;
 		final InputStream in = new ByteArrayInputStream((postCommand+"\n"+userName).getBytes());
+		System.setIn(in);
 
 		final SocialApp app = new SocialApp();
-		final CommandProcessor processor = new CommandProcessor(app, in, System.out);
+		final CommandProcessor processor = new CommandProcessor(app);
 		processor.getCommand();
 		processor.getCommand();
 		assertThat(outContent.toString(), equalTo(message));
@@ -46,8 +47,9 @@ public class TestApp {
 	@Test
 	public void testMessagePost() {
 		final InputStream in = new ByteArrayInputStream("Alice -> Hi Mom!".getBytes());
+		System.setIn(in);
 		final SocialApp app = new SocialApp();
-		final CommandProcessor processor = new CommandProcessor(app, in, System.out);
+		final CommandProcessor processor = new CommandProcessor(app);
 		processor.getCommand();
 		assertThat(app.users(), contains(new User("Alice")));
 	}
