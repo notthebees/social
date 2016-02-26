@@ -1,14 +1,21 @@
 package app;
 
+import java.util.List;
+
 import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
 
 public class User {
 
 	private final String name;
+	private List<Message> timeline;
 
 	public User(final String name) {
 		this.name = name;
+	}
+
+	public void addMessage(final Message message) {
+		timeline.add(message);
 	}
 
 	@Override
@@ -18,12 +25,21 @@ public class User {
 
 	@Override
 	public boolean equals(final Object obj) {
-		return EqualsBuilder.reflectionEquals(this, obj);
+		if (obj instanceof User) {
+			final User other = (User) obj;
+			return new EqualsBuilder()
+			.append(name, other.name)
+			.isEquals();
+		} else {
+			return false;
+		}
 	}
 
 	@Override
 	public int hashCode() {
-		return HashCodeBuilder.reflectionHashCode(this);
+		return new HashCodeBuilder()
+		.append(name)
+		.toHashCode();
 	}
 
 }
