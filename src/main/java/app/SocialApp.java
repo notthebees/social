@@ -9,10 +9,11 @@ public class SocialApp implements NetworkingApp {
 
 	public void postMessage(final User user, final Message message) {
 		users.add(user);
+		user.addMessage(message);
 	}
 
 	public void readTimeline(final User user) {
-		// TODO Auto-generated method stub
+		user.printTimeline();
 	}
 
 	public Set<User> users() {
