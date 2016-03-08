@@ -14,6 +14,7 @@ import org.junit.Before;
 import org.junit.Test;
 
 import userinterface.CommandProcessor;
+import userinterface.SimpleProcessor;
 
 public class TestApp {
 
@@ -38,7 +39,7 @@ public class TestApp {
 		System.setIn(in);
 
 		final SocialApp app = new SocialApp();
-		final CommandProcessor processor = new CommandProcessor(app);
+		final CommandProcessor processor = new SimpleProcessor(app);
 		processor.getCommand();
 		processor.getCommand();
 		assertThat(outContent.toString(), equalTo(message));
@@ -49,7 +50,7 @@ public class TestApp {
 		final InputStream in = new ByteArrayInputStream("Alice -> Hi Mom!".getBytes());
 		System.setIn(in);
 		final SocialApp app = new SocialApp();
-		final CommandProcessor processor = new CommandProcessor(app);
+		final CommandProcessor processor = new SimpleProcessor(app);
 		processor.getCommand();
 		assertThat(app.users(), contains(new User("Alice")));
 	}
