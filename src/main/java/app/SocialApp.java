@@ -21,4 +21,9 @@ public class SocialApp implements NetworkingApp {
 		return null;
 	}
 
+	public void follow(final User subscriber, final User publisher) {
+		// TODO Auto-generated method stub
+
+	}
+
 }

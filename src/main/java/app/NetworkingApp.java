@@ -11,4 +11,6 @@ public interface NetworkingApp {
 
 	List<Message> readTimeline(User user);
 
+	void follow(User subscriber, User publisher);
+
 }
