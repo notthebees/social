@@ -1,5 +1,6 @@
 package app;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.apache.commons.lang3.builder.EqualsBuilder;
@@ -8,7 +9,7 @@ import org.apache.commons.lang3.builder.HashCodeBuilder;
 public class User {
 
 	private final String name;
-	private List<Message> timeline;
+	private final List<Message> timeline = new ArrayList<Message>();
 
 	public User(final String name) {
 		this.name = name;
@@ -16,6 +17,12 @@ public class User {
 
 	public void addMessage(final Message message) {
 		timeline.add(message);
+	}
+
+	public void printTimeline() {
+		for (final Message message : timeline) {
+			System.out.println(message);
+		}
 	}
 
 	@Override
