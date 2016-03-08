@@ -1,7 +1,31 @@
 package userinterface;
 
-public interface CommandProcessor {
+import java.util.Scanner;
 
-	void getCommand();
+import app.Message;
+import app.NetworkingApp;
+import app.User;
+
+public class CommandProcessor {
+
+	private final NetworkingApp app;
+	private final Scanner scanner;
+
+	public CommandProcessor(final NetworkingApp app) {
+		this.app = app;
+		scanner = new Scanner(System.in);
+	}
+
+	public void getCommand() {
+		final String input = scanner.nextLine();
+		final String[] args = input.split(" -> ");
+		final User user = new User(args[0]);
+		if (args.length > 1) {
+			final Message message = new Message(args[1]);
+			app.postMessage(user, message);
+		} else {
+			app.readTimeline(user);
+		}
+	}
 
 }

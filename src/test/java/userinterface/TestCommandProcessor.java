@@ -39,7 +39,7 @@ public class TestCommandProcessor {
 		final InputStream in = new ByteArrayInputStream("Alice".getBytes());
 		System.setIn(in);
 
-		final CommandProcessor processor = new SimpleProcessor(app);
+		final CommandProcessor processor = new CommandProcessor(app);
 
 		context.checking(new Expectations() {{
 			oneOf(app).readTimeline(new User("Alice"));;
@@ -53,7 +53,7 @@ public class TestCommandProcessor {
 		final InputStream in = new ByteArrayInputStream("Alice -> Hi Mom!".getBytes());
 		System.setIn(in);
 
-		final CommandProcessor processor = new SimpleProcessor(app);
+		final CommandProcessor processor = new CommandProcessor(app);
 
 		context.checking(new Expectations() {{
 			oneOf(app).postMessage(new User("Alice"), new Message("Hi Mom!"));
