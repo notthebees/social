@@ -1,7 +1,6 @@
 package app;
 
 import java.util.HashSet;
-import java.util.List;
 import java.util.Set;
 
 public class SocialApp implements NetworkingApp {
@@ -12,13 +11,12 @@ public class SocialApp implements NetworkingApp {
 		users.add(user);
 	}
 
-	public Set<User> users() {
-		return users;
+	public void readTimeline(final User user) {
+		// TODO Auto-generated method stub
 	}
 
-	public List<Message> readTimeline(final User user) {
-		// TODO Auto-generated method stub
-		return null;
+	public Set<User> users() {
+		return users;
 	}
 
 }

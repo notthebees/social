@@ -1,6 +1,5 @@
 package app;
 
-import java.util.List;
 import java.util.Set;
 
 public interface NetworkingApp {
@@ -9,6 +8,6 @@ public interface NetworkingApp {
 
 	Set<User> users();
 
-	List<Message> readTimeline(User user);
+	void readTimeline(User user);
 
 }
