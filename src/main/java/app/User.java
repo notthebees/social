@@ -63,4 +63,8 @@ public class User {
 		.toHashCode();
 	}
 
+	public boolean nameIs(final String username) {
+		return name.equals(username);
+	}
+
 }

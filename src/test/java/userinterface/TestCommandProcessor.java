@@ -15,14 +15,11 @@ import org.junit.Test;
 
 import app.Message;
 import app.NetworkingApp;
-import app.User;
 
 public class TestCommandProcessor {
 	@Rule public final JUnitRuleMockery context = new JUnitRuleMockery();
 
 	@Mock NetworkingApp app;
-
-	private final User alice = new User("Alice");
 
 	private final ByteArrayOutputStream outContent = new ByteArrayOutputStream();
 
@@ -44,7 +41,7 @@ public class TestCommandProcessor {
 		final CommandProcessor processor = new CommandProcessor(app);
 
 		context.checking(new Expectations() {{
-			oneOf(app).wall(alice);
+			oneOf(app).wall("Alice");
 		}});
 
 		processor.getCommand();
@@ -58,7 +55,7 @@ public class TestCommandProcessor {
 		final CommandProcessor processor = new CommandProcessor(app);
 
 		context.checking(new Expectations() {{
-			oneOf(app).follow(alice, new User("Bob"));
+			oneOf(app).follow("Alice", "Bob");
 		}});
 
 		processor.getCommand();
@@ -72,7 +69,7 @@ public class TestCommandProcessor {
 		final CommandProcessor processor = new CommandProcessor(app);
 
 		context.checking(new Expectations() {{
-			oneOf(app).readTimeline(alice);
+			oneOf(app).readTimeline("Alice");
 		}});
 
 		processor.getCommand();
@@ -86,7 +83,7 @@ public class TestCommandProcessor {
 		final CommandProcessor processor = new CommandProcessor(app);
 
 		context.checking(new Expectations() {{
-			oneOf(app).postMessage(alice, new Message("Hi Mom!"));
+			oneOf(app).postMessage("Alice", new Message("Hi Mom!"));
 		}});
 
 		processor.getCommand();

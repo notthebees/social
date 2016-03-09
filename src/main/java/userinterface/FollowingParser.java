@@ -1,7 +1,6 @@
 package userinterface;
 
 import app.NetworkingApp;
-import app.User;
 
 public class FollowingParser implements CommandParser {
 
@@ -13,9 +12,9 @@ public class FollowingParser implements CommandParser {
 
 	public void process(final String command, final NetworkingApp app) {
 		final String[] args = command.split(separator);
-		final User subscriber = new User(args[0]);
-		final User publisher = new User(args[1]);
-		app.follow(subscriber, publisher);
+		final String subscriberName = args[0];
+		final String publisherName = args[1];
+		app.follow(subscriberName, publisherName);
 	}
 
 }

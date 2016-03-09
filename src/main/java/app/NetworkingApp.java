@@ -4,14 +4,14 @@ import java.util.Set;
 
 public interface NetworkingApp {
 
-	void postMessage(User user, Message message);
+	void postMessage(String username, Message message);
+
+	void readTimeline(String username);
+
+	void follow(String subscriberName, String publisherName);
+
+	void wall(String username);
 
 	Set<User> users();
-
-	void readTimeline(User user);
-
-	void follow(User subscriber, User publisher);
-
-	void wall(User user);
 
 }

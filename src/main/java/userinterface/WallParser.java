@@ -1,7 +1,6 @@
 package userinterface;
 
 import app.NetworkingApp;
-import app.User;
 
 public class WallParser implements CommandParser {
 
@@ -11,8 +10,8 @@ public class WallParser implements CommandParser {
 
 	public void process(final String command, final NetworkingApp app) {
 		final String[] args = command.split(" wall");
-		final User user = new User(args[0]);
-		app.wall(user);
+		final String username = args[0];
+		app.wall(username);
 	}
 
 }

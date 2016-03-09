@@ -5,7 +5,6 @@ import java.util.Scanner;
 import java.util.Set;
 
 import app.NetworkingApp;
-import app.User;
 
 public class CommandProcessor {
 
@@ -38,8 +37,8 @@ public class CommandProcessor {
 	}
 
 	private void processReadCommand(final String command) {
-		final User user = new User(command);
-		app.readTimeline(user);
+		final String username = command;
+		app.readTimeline(username);
 	}
 
 }

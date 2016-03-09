@@ -30,16 +30,13 @@ public class TestSocialApp {
 
 	@Test
 	public void subscriberReceivesPublishersPostsToTimelineWhenFollowing() {
-		final User subscriber = alice;
-		final User publisher = bob;
-
 		final String subscriberMessage = "Hi I'm Alice.";
 		final String publisherMessage = "I'm Bob.";
-		app.postMessage(subscriber, new Message(subscriberMessage));
-		app.postMessage(publisher, new Message(publisherMessage));
+		app.postMessage("Alice", new Message(subscriberMessage));
+		app.postMessage("Bob", new Message(publisherMessage));
 
-		app.follow(subscriber, publisher);
-		app.wall(subscriber);
+		app.follow("Alice", "Bob");
+		app.wall("Alice");
 
 		assertThat(outContent.toString(),
 				equalTo(subscriberMessage + "\n" + publisherMessage + "\n"));
@@ -47,27 +44,26 @@ public class TestSocialApp {
 
 	@Test
 	public void readsUsersTimeline() {
-		app.postMessage(alice, new Message("Hi"));
-		app.postMessage(alice, new Message("Bye"));
+		app.postMessage("Alice", new Message("Hi"));
+		app.postMessage("Alice", new Message("Bye"));
 
-		app.readTimeline(alice);
+		app.readTimeline("Alice");
 
 		assertThat(outContent.toString(), equalTo("Hi\nBye\n"));
 	}
 
 	@Test
 	public void noDuplicateUsernames() {
-		final User alice2 = new User("Alice");
-		app.postMessage(alice, new Message("something"));
-		app.postMessage(alice2, new Message("something"));
+		app.postMessage("Alice", new Message("something"));
+		app.postMessage("Alice", new Message("something"));
 
 		assertThat(app.users(), contains(alice));
 	}
 
 	@Test
 	public void newUsersCreatedWhenFirstMessagePosted() {
-		app.postMessage(alice, new Message("something"));
-		app.postMessage(bob, new Message("something"));
+		app.postMessage("Alice", new Message("something"));
+		app.postMessage("Bob", new Message("something"));
 
 		assertThat(app.users(), contains(alice, bob));
 	}
