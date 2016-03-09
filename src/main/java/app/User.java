@@ -1,8 +1,6 @@
 package app;
 
-import java.util.ArrayList;
 import java.util.HashSet;
-import java.util.List;
 import java.util.Set;
 
 import org.apache.commons.lang3.builder.EqualsBuilder;
@@ -23,11 +21,10 @@ public class User {
 		return timeline;
 	}
 
-	public List<Message> wall() {
-		final List<Message> wall = new ArrayList<Message>();
-		wall.addAll(timeline.messages());
+	public Wall wall() {
+		Wall wall = new Wall(timeline.messages());
 		for (final User publisher : subscriptions) {
-			wall.addAll(publisher.timeline.messages());
+			wall = wall.merge(publisher.timeline.messages());
 		}
 		return wall;
 	}

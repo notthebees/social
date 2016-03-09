@@ -1,9 +1,7 @@
 package userinterface;
 
-import java.util.List;
-
-import app.Message;
 import app.NetworkingApp;
+import app.Wall;
 
 public class WallParser implements CommandParser {
 
@@ -14,14 +12,8 @@ public class WallParser implements CommandParser {
 	public void process(final String command, final NetworkingApp app) {
 		final String[] args = command.split(" wall");
 		final String username = args[0];
-		final List<Message> wall = app.readWall(username);
-		print(wall);
-	}
-
-	private void print(final List<Message> wall) {
-		for (final Message message : wall) {
-			System.out.println(message);
-		}
+		final Wall wall = app.readWall(username);
+		System.out.println(wall);
 	}
 
 }

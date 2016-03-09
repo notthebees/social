@@ -1,7 +1,6 @@
 package app;
 
 import java.util.HashSet;
-import java.util.List;
 import java.util.Set;
 
 public class SocialApp implements NetworkingApp {
@@ -49,7 +48,7 @@ public class SocialApp implements NetworkingApp {
 		subscriber.addSubscription(publisher);
 	}
 
-	public List<Message> readWall(final String username) {
+	public Wall readWall(final String username) {
 		final User user = findUser(username);
 		return user.wall();
 	}

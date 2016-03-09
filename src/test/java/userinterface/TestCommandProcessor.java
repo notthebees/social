@@ -16,6 +16,7 @@ import org.junit.Test;
 import app.Message;
 import app.NetworkingApp;
 import app.Timeline;
+import app.Wall;
 
 public class TestCommandProcessor {
 	@Rule public final JUnitRuleMockery context = new JUnitRuleMockery();
@@ -42,7 +43,7 @@ public class TestCommandProcessor {
 		final CommandProcessor processor = new CommandProcessor(app);
 
 		context.checking(new Expectations() {{
-			oneOf(app).readWall("Alice");
+			oneOf(app).readWall("Alice"); will(returnValue(new Wall()));
 		}});
 
 		processor.getCommand();

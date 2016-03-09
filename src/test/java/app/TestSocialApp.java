@@ -1,7 +1,6 @@
 package app;
 
 import static org.hamcrest.MatcherAssert.assertThat;
-import static org.hamcrest.Matchers.contains;
 import static org.hamcrest.Matchers.equalTo;
 
 import org.junit.Test;
@@ -18,9 +17,8 @@ public class TestSocialApp {
 		app.postMessage("Bob", publisherMessage);
 
 		app.follow("Alice", "Bob");
-		app.readWall("Alice");
 
-		assertThat(app.readWall("Alice"), contains(subscriberMessage, publisherMessage));
+		assertThat(app.readWall("Alice"), equalTo(new Wall(subscriberMessage, publisherMessage)));
 	}
 
 	@Test
