@@ -1,6 +1,7 @@
 package app;
 
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 public class SocialApp implements NetworkingApp {
@@ -8,7 +9,7 @@ public class SocialApp implements NetworkingApp {
 	private final Set<User> users = new HashSet<User>();
 
 	public void postMessage(final String username, final Message message) {
-		User user;
+		final User user;
 		if (exists(username)) {
 			user = findUser(username);
 		}
@@ -28,9 +29,9 @@ public class SocialApp implements NetworkingApp {
 		return false;
 	}
 
-	public void readTimeline(final String username) {
+	public List<Message> readTimeline(final String username) {
 		final User user = findUser(username);
-		user.printTimeline();
+		return user.timeline();
 	}
 
 	private User findUser(final String username) {

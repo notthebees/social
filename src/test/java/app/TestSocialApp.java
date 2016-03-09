@@ -1,6 +1,7 @@
 package app;
 
 import static org.hamcrest.MatcherAssert.assertThat;
+import static org.hamcrest.Matchers.contains;
 import static org.hamcrest.Matchers.equalTo;
 
 import java.io.ByteArrayOutputStream;
@@ -41,12 +42,15 @@ public class TestSocialApp {
 
 	@Test
 	public void readsUsersTimeline() {
-		app.postMessage("Alice", new Message("Hi"));
-		app.postMessage("Alice", new Message("Bye"));
+		final String username = "Alice";
+		final Message firstMessage = new Message("Hi");
+		final Message secondMessage = new Message("Bye");
+		app.postMessage(username, firstMessage);
+		app.postMessage(username, secondMessage);
 
-		app.readTimeline("Alice");
+		app.readTimeline(username);
 
-		assertThat(outContent.toString(), equalTo("Hi\nBye\n"));
+		assertThat(app.readTimeline(username), contains(firstMessage, secondMessage));
 	}
 
 }

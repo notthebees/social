@@ -18,6 +18,10 @@ public class User {
 		this.name = name;
 	}
 
+	public List<Message> timeline() {
+		return new ArrayList<Message>(timeline);
+	}
+
 	public void addMessage(final Message message) {
 		timeline.add(message);
 	}
