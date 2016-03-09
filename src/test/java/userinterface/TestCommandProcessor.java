@@ -45,11 +45,16 @@ public class TestCommandProcessor {
 
 		final CommandProcessor processor = new CommandProcessor(app);
 
+		final List<Message> wall = new ArrayList<Message>();
+		wall.add(new Message("Hi"));
+
 		context.checking(new Expectations() {{
-			oneOf(app).readWall("Alice");
+			oneOf(app).readWall("Alice"); will(returnValue(wall));
 		}});
 
 		processor.getCommand();
+
+		assertThat(outContent.toString(), equalTo("Hi\n"));
 	}
 
 	@Test
