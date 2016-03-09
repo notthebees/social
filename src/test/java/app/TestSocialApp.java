@@ -32,7 +32,7 @@ public class TestSocialApp {
 
 		app.readTimeline(username);
 
-		assertThat(app.readTimeline(username), contains(firstMessage, secondMessage));
+		assertThat(app.readTimeline(username), contains(secondMessage, firstMessage));
 	}
 
 }

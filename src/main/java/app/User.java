@@ -32,7 +32,7 @@ public class User {
 	}
 
 	public void addMessage(final Message message) {
-		timeline.add(message);
+		timeline.add(0, message);
 	}
 
 	public void addSubscription(final User publisher) {
