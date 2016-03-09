@@ -10,4 +10,6 @@ public interface NetworkingApp {
 
 	void readTimeline(User user);
 
+	void follow(User subscriber, User publisher);
+
 }

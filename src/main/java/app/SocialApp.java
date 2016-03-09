@@ -20,4 +20,9 @@ public class SocialApp implements NetworkingApp {
 		return users;
 	}
 
+	public void follow(final User subscriber, final User publisher) {
+		// TODO Auto-generated method stub
+
+	}
+
 }
