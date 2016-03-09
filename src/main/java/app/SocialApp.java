@@ -16,18 +16,16 @@ public class SocialApp implements NetworkingApp {
 		user.printTimeline();
 	}
 
-	public Set<User> users() {
-		return users;
-	}
-
 	public void follow(final User subscriber, final User publisher) {
-		// TODO Auto-generated method stub
-
+		subscriber.addSubscription(publisher);
 	}
 
 	public void wall(final User user) {
-		// TODO Auto-generated method stub
+		user.printWall();
+	}
 
+	public Set<User> users() {
+		return users;
 	}
 
 }
