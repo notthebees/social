@@ -1,12 +1,11 @@
 package userinterface;
 
 import java.util.HashSet;
-import java.util.List;
 import java.util.Scanner;
 import java.util.Set;
 
-import app.Message;
 import app.NetworkingApp;
+import app.Timeline;
 
 public class CommandProcessor {
 
@@ -42,10 +41,8 @@ public class CommandProcessor {
 
 	private void processReadCommand(final String command) {
 		final String username = command;
-		final List<Message> timeline = app.readTimeline(username);
-		for (final Message message : timeline) {
-			System.out.println(message);
-		}
+		final Timeline timeline = app.readTimeline(username);
+		System.out.println(timeline);
 	}
 
 	public boolean terminated() {

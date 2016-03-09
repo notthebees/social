@@ -11,28 +11,29 @@ import org.apache.commons.lang3.builder.HashCodeBuilder;
 public class User {
 
 	private final String name;
-	private final List<Message> timeline = new ArrayList<Message>();
+	private final Timeline timeline;
 	private final Set<User> subscriptions = new HashSet<User>();
 
 	public User(final String name) {
 		this.name = name;
+		timeline = new Timeline();
 	}
 
-	public List<Message> timeline() {
-		return new ArrayList<Message>(timeline);
+	public Timeline timeline() {
+		return timeline;
 	}
 
 	public List<Message> wall() {
 		final List<Message> wall = new ArrayList<Message>();
-		wall.addAll(timeline);
+		wall.addAll(timeline.messages());
 		for (final User publisher : subscriptions) {
-			wall.addAll(publisher.timeline);
+			wall.addAll(publisher.timeline.messages());
 		}
 		return wall;
 	}
 
 	public void addMessage(final Message message) {
-		timeline.add(0, message);
+		timeline.add(message);
 	}
 
 	public void addSubscription(final User publisher) {

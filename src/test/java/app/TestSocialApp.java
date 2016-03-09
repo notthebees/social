@@ -2,6 +2,7 @@ package app;
 
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.contains;
+import static org.hamcrest.Matchers.equalTo;
 
 import org.junit.Test;
 
@@ -32,7 +33,7 @@ public class TestSocialApp {
 
 		app.readTimeline(username);
 
-		assertThat(app.readTimeline(username), contains(secondMessage, firstMessage));
+		assertThat(app.readTimeline(username), equalTo(new Timeline(secondMessage, firstMessage)));
 	}
 
 }

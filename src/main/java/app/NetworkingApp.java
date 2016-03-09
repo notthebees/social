@@ -6,7 +6,7 @@ public interface NetworkingApp {
 
 	void postMessage(String username, Message message);
 
-	List<Message> readTimeline(String username);
+	Timeline readTimeline(String username);
 
 	void follow(String subscriberName, String publisherName);
 

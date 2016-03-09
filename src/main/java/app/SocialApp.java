@@ -29,7 +29,7 @@ public class SocialApp implements NetworkingApp {
 		return false;
 	}
 
-	public List<Message> readTimeline(final String username) {
+	public Timeline readTimeline(final String username) {
 		final User user = findUser(username);
 		return user.timeline();
 	}
