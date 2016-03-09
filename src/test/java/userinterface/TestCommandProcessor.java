@@ -1,9 +1,14 @@
 package userinterface;
 
+import static org.hamcrest.MatcherAssert.assertThat;
+import static org.hamcrest.Matchers.equalTo;
+
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.InputStream;
 import java.io.PrintStream;
+import java.util.ArrayList;
+import java.util.List;
 
 import org.jmock.Expectations;
 import org.jmock.auto.Mock;
@@ -62,17 +67,22 @@ public class TestCommandProcessor {
 	}
 
 	@Test
-	public void processesReadCommand() {
+	public void processesReadCommandAndPrints() {
 		final InputStream in = new ByteArrayInputStream("Alice".getBytes());
 		System.setIn(in);
 
 		final CommandProcessor processor = new CommandProcessor(app);
 
+		final List<Message> timeline = new ArrayList<Message>();
+		timeline.add(new Message("Hi"));
+
 		context.checking(new Expectations() {{
-			oneOf(app).readTimeline("Alice");
+			oneOf(app).readTimeline("Alice"); will(returnValue(timeline));
 		}});
 
 		processor.getCommand();
+
+		assertThat(outContent.toString(), equalTo("Hi\n"));
 	}
 
 	@Test
