@@ -1,6 +1,9 @@
 package app;
 
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.Date;
+import java.util.List;
 
 import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
@@ -15,6 +18,17 @@ public class Message {
 		this.message = message;
 		this.author = author;
 		date = new Date();
+	}
+
+	public static List<Message> sort(final List<Message> messages) {
+		Collections.sort(messages, new MessageComparator());
+		return messages;
+	}
+
+	private static class MessageComparator implements Comparator<Message> {
+		public int compare(final Message message0, final Message message1) {
+			return message1.date.compareTo(message0.date);
+		}
 	}
 
 	@Override
