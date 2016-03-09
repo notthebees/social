@@ -12,4 +12,6 @@ public interface NetworkingApp {
 
 	void follow(User subscriber, User publisher);
 
+	void wall(User user);
+
 }

@@ -25,4 +25,9 @@ public class SocialApp implements NetworkingApp {
 
 	}
 
+	public void wall(final User user) {
+		// TODO Auto-generated method stub
+
+	}
+
 }
