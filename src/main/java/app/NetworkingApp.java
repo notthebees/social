@@ -10,6 +10,6 @@ public interface NetworkingApp {
 
 	void follow(String subscriberName, String publisherName);
 
-	void wall(String username);
+	List<Message> readWall(String username);
 
 }

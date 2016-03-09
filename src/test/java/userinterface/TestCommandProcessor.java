@@ -41,7 +41,7 @@ public class TestCommandProcessor {
 		final CommandProcessor processor = new CommandProcessor(app);
 
 		context.checking(new Expectations() {{
-			oneOf(app).wall("Alice");
+			oneOf(app).readWall("Alice");
 		}});
 
 		processor.getCommand();

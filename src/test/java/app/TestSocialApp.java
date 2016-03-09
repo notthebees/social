@@ -2,7 +2,6 @@ package app;
 
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.contains;
-import static org.hamcrest.Matchers.equalTo;
 
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
@@ -28,16 +27,15 @@ public class TestSocialApp {
 
 	@Test
 	public void subscriberReceivesPublishersPostsToTimelineWhenFollowing() {
-		final String subscriberMessage = "Hi I'm Alice.";
-		final String publisherMessage = "I'm Bob.";
-		app.postMessage("Alice", new Message(subscriberMessage));
-		app.postMessage("Bob", new Message(publisherMessage));
+		final Message subscriberMessage = new Message("Hi I'm Alice.");
+		final Message publisherMessage = new Message("I'm Bob.");
+		app.postMessage("Alice", subscriberMessage);
+		app.postMessage("Bob", publisherMessage);
 
 		app.follow("Alice", "Bob");
-		app.wall("Alice");
+		app.readWall("Alice");
 
-		assertThat(outContent.toString(),
-				equalTo(subscriberMessage + "\n" + publisherMessage + "\n"));
+		assertThat(app.readWall("Alice"), contains(subscriberMessage, publisherMessage));
 	}
 
 	@Test

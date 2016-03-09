@@ -22,6 +22,15 @@ public class User {
 		return new ArrayList<Message>(timeline);
 	}
 
+	public List<Message> wall() {
+		final List<Message> wall = new ArrayList<Message>();
+		wall.addAll(timeline);
+		for (final User publisher : subscriptions) {
+			wall.addAll(publisher.timeline);
+		}
+		return wall;
+	}
+
 	public void addMessage(final Message message) {
 		timeline.add(message);
 	}

@@ -11,7 +11,7 @@ public class WallParser implements CommandParser {
 	public void process(final String command, final NetworkingApp app) {
 		final String[] args = command.split(" wall");
 		final String username = args[0];
-		app.wall(username);
+		app.readWall(username);
 	}
 
 }

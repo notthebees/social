@@ -49,9 +49,9 @@ public class SocialApp implements NetworkingApp {
 		subscriber.addSubscription(publisher);
 	}
 
-	public void wall(final String username) {
+	public List<Message> readWall(final String username) {
 		final User user = findUser(username);
-		user.printWall();
+		return user.wall();
 	}
 
 }
