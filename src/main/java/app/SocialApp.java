@@ -53,8 +53,4 @@ public class SocialApp implements NetworkingApp {
 		user.printWall();
 	}
 
-	public Set<User> users() {
-		return users;
-	}
-
 }

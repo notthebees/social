@@ -1,7 +1,6 @@
 package app;
 
 import static org.hamcrest.MatcherAssert.assertThat;
-import static org.hamcrest.Matchers.contains;
 import static org.hamcrest.Matchers.equalTo;
 
 import java.io.ByteArrayOutputStream;
@@ -14,8 +13,6 @@ import org.junit.Test;
 public class TestSocialApp {
 
 	private final SocialApp app = new SocialApp();
-	private final User alice = new User("Alice");
-	private final User bob = new User("Bob");
 	private final ByteArrayOutputStream outContent = new ByteArrayOutputStream();
 
 	@Before
@@ -50,22 +47,6 @@ public class TestSocialApp {
 		app.readTimeline("Alice");
 
 		assertThat(outContent.toString(), equalTo("Hi\nBye\n"));
-	}
-
-	@Test
-	public void noDuplicateUsernames() {
-		app.postMessage("Alice", new Message("something"));
-		app.postMessage("Alice", new Message("something"));
-
-		assertThat(app.users(), contains(alice));
-	}
-
-	@Test
-	public void newUsersCreatedWhenFirstMessagePosted() {
-		app.postMessage("Alice", new Message("something"));
-		app.postMessage("Bob", new Message("something"));
-
-		assertThat(app.users(), contains(alice, bob));
 	}
 
 }
