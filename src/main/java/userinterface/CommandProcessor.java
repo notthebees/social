@@ -19,6 +19,7 @@ public class CommandProcessor {
 
 		parsers.add(new PostingParser());
 		parsers.add(new FollowingParser());
+		parsers.add(new WallParser());
 	}
 
 	public void getCommand() {

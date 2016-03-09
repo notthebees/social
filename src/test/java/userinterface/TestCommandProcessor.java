@@ -37,6 +37,20 @@ public class TestCommandProcessor {
 	}
 
 	@Test
+	public void processesWallCommand() {
+		final InputStream in = new ByteArrayInputStream("Alice wall".getBytes());
+		System.setIn(in);
+
+		final CommandProcessor processor = new CommandProcessor(app);
+
+		context.checking(new Expectations() {{
+			oneOf(app).wall(alice);
+		}});
+
+		processor.getCommand();
+	}
+
+	@Test
 	public void processesFollowCommand() {
 		final InputStream in = new ByteArrayInputStream("Alice follows Bob".getBytes());
 		System.setIn(in);
@@ -44,7 +58,7 @@ public class TestCommandProcessor {
 		final CommandProcessor processor = new CommandProcessor(app);
 
 		context.checking(new Expectations() {{
-			oneOf(app).follow(alice, new User("Bob"));;
+			oneOf(app).follow(alice, new User("Bob"));
 		}});
 
 		processor.getCommand();
@@ -58,7 +72,7 @@ public class TestCommandProcessor {
 		final CommandProcessor processor = new CommandProcessor(app);
 
 		context.checking(new Expectations() {{
-			oneOf(app).readTimeline(alice);;
+			oneOf(app).readTimeline(alice);
 		}});
 
 		processor.getCommand();
