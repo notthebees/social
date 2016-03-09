@@ -24,12 +24,21 @@ public class Message {
 
 	@Override
 	public boolean equals(final Object obj) {
-		return EqualsBuilder.reflectionEquals(this, obj);
+		if (obj instanceof Message) {
+			final Message other = (Message) obj;
+			return new EqualsBuilder()
+			.append(message, other.message)
+			.isEquals();
+		} else {
+			return false;
+		}
 	}
 
 	@Override
 	public int hashCode() {
-		return HashCodeBuilder.reflectionHashCode(this);
+		return new HashCodeBuilder()
+		.append(message)
+		.toHashCode();
 	}
 
 }
