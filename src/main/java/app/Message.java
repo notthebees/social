@@ -17,10 +17,6 @@ public class Message {
 		date = new Date();
 	}
 
-	public Message(final String message) {
-		this(message, "");
-	}
-
 	@Override
 	public String toString() {
 		final long milliseconds = new Date().getTime() - date.getTime();

@@ -11,8 +11,8 @@ public class TestSocialApp {
 
 	@Test
 	public void subscriberReceivesPublishersPostsToTimelineWhenFollowing() {
-		final Message subscriberMessage = new Message("Hi I'm Alice.");
-		final Message publisherMessage = new Message("I'm Bob.");
+		final Message subscriberMessage = new Message("Hi I'm Alice.", "Alice");
+		final Message publisherMessage = new Message("I'm Bob.", "Bob");
 		app.postMessage("Alice", subscriberMessage);
 		app.postMessage("Bob", publisherMessage);
 
@@ -24,8 +24,8 @@ public class TestSocialApp {
 	@Test
 	public void readsUsersTimeline() {
 		final String username = "Alice";
-		final Message firstMessage = new Message("Hi");
-		final Message secondMessage = new Message("Bye");
+		final Message firstMessage = new Message("Hi", "Alice");
+		final Message secondMessage = new Message("Bye", "Alice");
 		app.postMessage(username, firstMessage);
 		app.postMessage(username, secondMessage);
 

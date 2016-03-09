@@ -85,7 +85,7 @@ public class TestCommandProcessor {
 		final CommandProcessor processor = new CommandProcessor(app);
 
 		context.checking(new Expectations() {{
-			oneOf(app).postMessage("Alice", new Message("Hi Mom!"));
+			oneOf(app).postMessage("Alice", new Message("Hi Mom!", "Alice"));
 		}});
 
 		processor.getCommand();
