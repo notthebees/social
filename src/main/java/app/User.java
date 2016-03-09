@@ -39,19 +39,6 @@ public class User {
 		subscriptions.add(publisher);
 	}
 
-	public void printTimeline() {
-		for (final Message message : timeline) {
-			System.out.println(message);
-		}
-	}
-
-	public void printWall() {
-		printTimeline();
-		for (final User publisher : subscriptions) {
-			publisher.printTimeline();
-		}
-	}
-
 	public boolean nameIs(final String username) {
 		return name.equals(username);
 	}
