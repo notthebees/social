@@ -30,16 +30,13 @@ public class CommandProcessor {
 			terminated = true;
 			return;
 		}
-		boolean commandRecognised = false;
 		for (final CommandParser parser : parsers) {
 			if (parser.recognises(command)) {
 				parser.process(command, app);
-				commandRecognised = true;
+				return;
 			}
 		}
-		if (! commandRecognised) {
-			processReadCommand(command);
-		}
+		processReadCommand(command);
 
 	}
 
