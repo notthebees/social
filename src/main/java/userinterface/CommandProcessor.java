@@ -13,6 +13,7 @@ public class CommandProcessor {
 	private final NetworkingApp app;
 	private final Scanner scanner;
 	private final Set<CommandParser> parsers = new HashSet<CommandParser>();
+	private boolean terminated = false;
 
 	public CommandProcessor(final NetworkingApp app) {
 		this.app = app;
@@ -25,6 +26,10 @@ public class CommandProcessor {
 
 	public void getCommand() {
 		final String command = scanner.nextLine();
+		if (command.equals("quit")) {
+			terminated = true;
+			return;
+		}
 		boolean commandRecognised = false;
 		for (final CommandParser parser : parsers) {
 			if (parser.recognises(command)) {
@@ -44,6 +49,10 @@ public class CommandProcessor {
 		for (final Message message : timeline) {
 			System.out.println(message);
 		}
+	}
+
+	public boolean terminated() {
+		return terminated;
 	}
 
 }
