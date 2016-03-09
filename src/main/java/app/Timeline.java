@@ -20,6 +20,10 @@ public class Timeline {
 		messages.add(0, message);
 	}
 
+	public Wall toWall() {
+		return new Wall(messages);
+	}
+
 	@Override
 	public String toString() {
 		final StringBuilder builder = new StringBuilder();
@@ -38,11 +42,6 @@ public class Timeline {
 	@Override
 	public int hashCode() {
 		return HashCodeBuilder.reflectionHashCode(this);
-	}
-
-	@Deprecated
-	public List<Message> messages() {
-		return new ArrayList<Message>(messages);
 	}
 
 }

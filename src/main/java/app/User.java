@@ -22,9 +22,9 @@ public class User {
 	}
 
 	public Wall wall() {
-		Wall wall = new Wall(timeline.messages());
+		Wall wall = timeline.toWall();
 		for (final User publisher : subscriptions) {
-			wall = wall.merge(publisher.timeline.messages());
+			wall = wall.mergeWith(publisher.timeline.toWall());
 		}
 		return wall;
 	}
