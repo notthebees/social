@@ -39,6 +39,10 @@ public class User {
 		}
 	}
 
+	public boolean nameIs(final String username) {
+		return name.equals(username);
+	}
+
 	@Override
 	public String toString() {
 		return "User: " + name;
@@ -46,25 +50,12 @@ public class User {
 
 	@Override
 	public boolean equals(final Object obj) {
-		if (obj instanceof User) {
-			final User other = (User) obj;
-			return new EqualsBuilder()
-			.append(name, other.name)
-			.isEquals();
-		} else {
-			return false;
-		}
+		return EqualsBuilder.reflectionEquals(this, obj);
 	}
 
 	@Override
 	public int hashCode() {
-		return new HashCodeBuilder()
-		.append(name)
-		.toHashCode();
-	}
-
-	public boolean nameIs(final String username) {
-		return name.equals(username);
+		return HashCodeBuilder.reflectionHashCode(this);
 	}
 
 }
