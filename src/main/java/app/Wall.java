@@ -30,7 +30,7 @@ public class Wall {
 	public String toString() {
 		final StringBuilder builder = new StringBuilder();
 		for (final Message message : messages) {
-			builder.append(message);
+			builder.append(message.withAuthor());
 			builder.append("\n");
 		}
 		return builder.toString();
