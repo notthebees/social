@@ -19,9 +19,18 @@ public class Message {
 
 	@Override
 	public String toString() {
+		return message + timeStamp();
+	}
+
+	private String timeStamp() {
 		final long milliseconds = new Date().getTime() - date.getTime();
-		final long seconds = milliseconds / 1000;
-		return message + " (" + seconds + " seconds ago)";
+		if (milliseconds >= 60000) {
+			final long minutes = milliseconds / 60000;
+			return " (" + minutes + " minutes ago)";
+		} else {
+			final long seconds = milliseconds / 1000;
+			return " (" + seconds + " seconds ago)";
+		}
 	}
 
 	public String withAuthor() {
