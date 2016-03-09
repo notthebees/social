@@ -22,6 +22,8 @@ public class TestCommandProcessor {
 
 	@Mock NetworkingApp app;
 
+	private final User alice = new User("Alice");
+
 	private final ByteArrayOutputStream outContent = new ByteArrayOutputStream();
 
 	@Before
@@ -35,6 +37,20 @@ public class TestCommandProcessor {
 	}
 
 	@Test
+	public void processesFollowCommand() {
+		final InputStream in = new ByteArrayInputStream("Alice follows Bob".getBytes());
+		System.setIn(in);
+
+		final CommandProcessor processor = new CommandProcessor(app);
+
+		context.checking(new Expectations() {{
+			oneOf(app).follow(alice, new User("Bob"));;
+		}});
+
+		processor.getCommand();
+	}
+
+	@Test
 	public void processesReadCommand() {
 		final InputStream in = new ByteArrayInputStream("Alice".getBytes());
 		System.setIn(in);
@@ -42,7 +58,7 @@ public class TestCommandProcessor {
 		final CommandProcessor processor = new CommandProcessor(app);
 
 		context.checking(new Expectations() {{
-			oneOf(app).readTimeline(new User("Alice"));;
+			oneOf(app).readTimeline(alice);;
 		}});
 
 		processor.getCommand();
@@ -56,7 +72,7 @@ public class TestCommandProcessor {
 		final CommandProcessor processor = new CommandProcessor(app);
 
 		context.checking(new Expectations() {{
-			oneOf(app).postMessage(new User("Alice"), new Message("Hi Mom!"));
+			oneOf(app).postMessage(alice, new Message("Hi Mom!"));
 		}});
 
 		processor.getCommand();
