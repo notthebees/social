@@ -1,5 +1,7 @@
 package app;
 
+import static app.Message.sort;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -23,7 +25,7 @@ public class Wall {
 	public Wall mergeWith(final Wall other) {
 		final List<Message> messages = new ArrayList<Message>(this.messages);
 		messages.addAll(other.messages);
-		return new Wall(messages);
+		return new Wall(sort(messages));
 	}
 
 	@Override
